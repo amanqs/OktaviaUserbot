@@ -23,7 +23,7 @@ SUDO_USERS = SUDO_USER
 RAIDS = []
 
 @Client.on_message(
-    filters.command(["pornspam"], ".") & (filters.me | filters.user(SUDO_USER))
+    filters.command(["spambkp"], ".") & (filters.me | filters.user(SUDO_USER))
 )
 async def pornspam(xspam: Client, e: Message): 
     counts = e.command[0]
@@ -59,7 +59,7 @@ async def pornspam(xspam: Client, e: Message):
 
 
 @Client.on_message(
-    filters.command(["raid"], ".") & (filters.me | filters.user(SUDO_USER))
+    filters.command(["oktavia"], ".") & (filters.me | filters.user(SUDO_USER))
 )
 async def raid(xspam: Client, e: Message):  
       Oktavia = "".join(e.text.split(maxsplit=1)[1:]).split(" ", 2)
@@ -75,10 +75,10 @@ async def raid(xspam: Client, e: Message):
 #              await e.reply(f"`404 : User Doesn't Exists In This Chat !`")
 #              return #remove # to enable this
           if int(id) in VERIFIED_USERS:
-                text = f"Chal Chal baap Ko mat sikha"
+                text = f"ERORR, soalnya ini pembuatku"
                 await e.reply_text(text)
           elif int(id) in SUDO_USERS:
-                text = f"Abe Lawde that guy part of my devs."
+                text = f"orang itu bagian dari devs saya."
                 await e.reply_text(text)
           else:
               fname = ok.first_name
@@ -102,10 +102,10 @@ async def raid(xspam: Client, e: Message):
               await e.reply(f"`404 : User Doesn't Exists In This Chat !`")
               return
           if int(id) in VERIFIED_USERS:
-                text = f"Chal Chal baap Ko mat sikha"
+                text = f"ERORR, soalnya ini pembuatku"
                 await e.reply_text(text)
           elif int(id) in SUDO_USERS:
-                text = f"Abe Lawde that guy part of my devs."
+                text = f"orang itu bagian dari devs saya."
                 await e.reply_text(text)
           else:
               fname = ok.first_name
@@ -116,20 +116,20 @@ async def raid(xspam: Client, e: Message):
                     await xspam.send_message(e.chat.id, msg)
                     await asyncio.sleep(0.10)
       else:
-          await e.reply_text("Usage: .raid count username")
+          await e.reply_text("Usage: .oktavia count username")
 
 
 add_command_help(
-    "raid",
+    "oktavia",
     [
-        [".raid", "<user id and count>`."],
-        [".pornspam", "<count>`."],
+        [".oktavia", "<user id and count>`."],
+        [".spambkp", "<count>`."],
         [".hang", "Make telegram hang."],
     ],
 )
 
 @Client.on_message(
-    filters.command(["dreplyraid"], ".") & (filters.me | filters.user(SUDO_USER))
+    filters.command(["dreplyoktavia"], ".") & (filters.me | filters.user(SUDO_USER))
 )
 async def gmute_user(client: Client, message: Message):
     args = await extract_user(message)
@@ -149,20 +149,20 @@ async def gmute_user(client: Client, message: Message):
         return
     try:
         if user.id not in (await get_rraid_users()):
-           await ex.edit("Replyraid is not activated on this user")
+           await ex.edit("Replyoktavia is not activated on this user")
            return
         await unrraid_user(user.id)
         RAIDS.remove(user.id)
-        await ex.edit(f"[{user.first_name}](tg://user?id={user.id}) DeActivated ReplyRaid!")
+        await ex.edit(f"[{user.first_name}](tg://user?id={user.id}) DeActivated Replyoktavia!")
     except Exception as e:
         await ex.edit(f"**ERROR:** `{e}`")
         return
 
 
 add_command_help(
-    "replyraid",
+    "replyoktavia",
     [
         [".replyraid", "Reply To User\n To Raid on Someone."],
-        [".dreplyraid", "To Disable ReplyRaid."],
+        [".dreplyoktavia", "To Disable ReplyRaid."],
     ],
 )

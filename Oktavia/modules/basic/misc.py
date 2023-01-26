@@ -26,10 +26,9 @@ if ALIVE_TEXT:
    txt = ALIVE_TEXT
 else:
     txt = (
-      f"** 𝗢𝗸𝘁𝗮𝘃𝗶𝗮𝗨𝘀𝗲𝗿𝗯𝗼𝘁 **\n",
-      f"**status**: [Admin]\n\n",
+f"** 𝗢𝗸𝘁𝗮𝘃𝗶𝗮𝗨𝘀𝗲𝗿𝗯𝗼𝘁 **\n",
+    f"**status**: [Admin]\n\n",
           f" **oktavia_version**: `0.1`\n",
-          f" **ping**["ping"]\n",
           f" **peer_users: `13 users`",
           f" **oktavia_uptime**: `{str(datetime.now() - START_TIME).split('.')[0]}`\n",
           f" **Order**: [ᴀᴍᴀɴɢ](t.me/amwang)\n",

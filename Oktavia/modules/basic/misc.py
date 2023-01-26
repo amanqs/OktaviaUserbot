@@ -25,16 +25,16 @@ from Oktavia.modules.help import add_command_help
 if ALIVE_TEXT:
    txt = ALIVE_TEXT
 else:
-    txt = (
-f"** 𝗢𝗸𝘁𝗮𝘃𝗶𝗮𝗨𝘀𝗲𝗿𝗯𝗼𝘁 **\n"
-           f"**status**: [Admin]\n"
-              f" **oktavia_version**: `0.1`\n"
-              f" **expires_on**: `25.01.2028`\n"
-              f" **expires_on**: `25.01.2028`\n"
-              f" **peer_users**: `13 users`\n"
-              f" **dc_id**: `5`\n"
-              f" **User : {message.from_user.mention}\n"
-              f" **Order**: [ᴀᴍᴀɴɢ](t.me/amwang)\n"
+    txt = (f"""
+<b> — Hey, I am alive.</b>
+
+<b> • User :</b> {message.from_user.mention}
+<b> • Plugins :</b> <code>{len(CMD_HELP)} Modules</code>
+<b> • Python Version :</b> <code>{pyver.split()[0]}</code>
+<b> • Pyrogram Version :</b> <code>{pyrover}</code>
+<b> • Bot Uptime :</b> <code>{uptime}</code>
+
+<b> — Bot version: 2.0</b>
     )
 
 @Client.on_message(

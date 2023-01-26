@@ -28,8 +28,8 @@ else:
     txt = (
 f"** 𝗢𝗸𝘁𝗮𝘃𝗶𝗮𝗨𝘀𝗲𝗿𝗯𝗼𝘁 **\n"
            f"**status**: [Admin]\n"
-              f" **oktavia_uptime**: </b> <code>{uptime}</code>"
               f" **oktavia_version**: `0.1`\n"
+              f" **expires_on**: `25.01.2028`\n"
               f" **expires_on**: `25.01.2028`\n"
               f" **peer_users**: `13 users`\n"
               f" **dc_id**: `5`\n"

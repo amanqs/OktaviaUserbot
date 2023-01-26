@@ -26,8 +26,9 @@ async def asupan(client: Client, message: Message):
 
 
 add_command_help(
-    "misc",
+    "asupan",
     [
         [".asupan", "get asupan video."],
+        [".bokep"], "kaming sun..."
     ],
 )

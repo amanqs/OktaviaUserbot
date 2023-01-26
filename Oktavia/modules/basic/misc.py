@@ -32,7 +32,7 @@ else:
       f"**status**: [Admin]"
           f" **oktavia_version**: `0.1`\n"
           f" **ping_dc**:{ping}\n"
-          f" **peer_users: `13 users`
+          f" **peer_users: `13 users`"
           f" **oktavia_uptime**: `{str(datetime.now() - START_TIME).split('.')[0]}`\n"
           f" **Order**: [ᴀᴍᴀɴɢ](t.me/amwang)\n"  
     )

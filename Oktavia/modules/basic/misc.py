@@ -22,25 +22,24 @@ from Oktavia import *
 
 from Oktavia.modules.help import add_command_help
 
-alive_logo = ALIVE_PIC or "https://telegra.ph//file/fdaa7abde8e1fcbb3f86c.jpg"
+alive_logo = ALIVE_PIC or "https://telegra.ph/file/cca73c1ce22e2c9932b99.jpg"
 
 if ALIVE_TEXT:
    txt = ALIVE_TEXT
 else:
     txt = (
-        f"**• 𝕬-𝖀𝕭𝕺𝕿 •**\n\n"
-        f"❏ **νєяѕισи**: `2.1`\n"
-        f"├• **υρтιмє**: `{str(datetime.now() - START_TIME).split('.')[0]}`\n"
-        f"├• **ρутнσи**: `{python_version()}`\n"
-        f"├• **ρуяσgяαм**: `{__version__}`\n"
-        f"├• **¢нαииєℓ**: [Support](t.me/about_db)\n"  
+     f"**𝗢𝗸𝘁𝗮𝘃𝗶𝗮𝗨𝘀𝗲𝗿𝗯𝗼𝘁**\n\n"
+      f"status: Admin"
+        f" **oktavia_version**: `0.1`\n"
+        f" **oktavia_uptime**: `{str(datetime.now() - START_TIME).split('.')[0]}`\n"
+        f" **Order**: [ᴀᴍᴀɴɢ](t.me/amwang)\n"  
     )
 
 @Client.on_message(
-    filters.command(["alive", "dazii"], ".") & (filters.me | filters.user(SUDO_USER))
+    filters.command(["alive", "oktavia"], ".") & (filters.me | filters.user(SUDO_USER))
 )
 async def alive(client: Client, message: Message):
-    xx = await message.reply_text("⚡️")
+    xx = await message.reply_text("🤖")
     try:
        await message.delete()
     except:

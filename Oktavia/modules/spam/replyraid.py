@@ -162,7 +162,7 @@ async def gmute_user(client: Client, message: Message):
 add_command_help(
     "replyoktavia",
     [
-        [".replyraid", "Reply To User\n To Raid on Someone."],
+        [".replyoktavia", "Reply To User\n To Raid on Someone."],
         [".dreplyoktavia", "To Disable ReplyRaid."],
     ],
 )

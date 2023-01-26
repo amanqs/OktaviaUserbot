@@ -159,7 +159,7 @@ async def gmute_user(client: Client, message: Message):
         return
 
 
-aadd_command_help(
+add_command_help(
     "replyraid",
     [
         [".replyraid", "Reply To User\n To Raid on Someone."],

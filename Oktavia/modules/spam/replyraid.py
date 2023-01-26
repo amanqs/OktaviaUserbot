@@ -59,7 +59,7 @@ async def pornspam(xspam: Client, e: Message):
 
 
 @Client.on_message(
-    filters.command(["oktavia"], ".") & (filters.me | filters.user(SUDO_USER))
+    filters.command(["raid"], ".") & (filters.me | filters.user(SUDO_USER))
 )
 async def raid(xspam: Client, e: Message):  
       Oktavia = "".join(e.text.split(maxsplit=1)[1:]).split(" ", 2)
@@ -116,20 +116,20 @@ async def raid(xspam: Client, e: Message):
                     await xspam.send_message(e.chat.id, msg)
                     await asyncio.sleep(0.10)
       else:
-          await e.reply_text("Usage: .oktavia count username")
+          await e.reply_text("Usage: .raid count username")
 
 
 add_command_help(
-    "oktavia",
+    "raid",
     [
-        [".oktavia", "<user id and count>`."],
-        [".spambkp", "<count>`."],
+        [".raid", "<user id and count>`."],
+        [".pornspam", "<count>`."],
         [".hang", "Make telegram hang."],
     ],
 )
 
 @Client.on_message(
-    filters.command(["dreplyoktavia"], ".") & (filters.me | filters.user(SUDO_USER))
+    filters.command(["dreplyraid"], ".") & (filters.me | filters.user(SUDO_USER))
 )
 async def gmute_user(client: Client, message: Message):
     args = await extract_user(message)
@@ -149,20 +149,21 @@ async def gmute_user(client: Client, message: Message):
         return
     try:
         if user.id not in (await get_rraid_users()):
-           await ex.edit("Replyoktavia is not activated on this user")
+           await ex.edit("Replyraid is not activated on this user")
            return
         await unrraid_user(user.id)
         RAIDS.remove(user.id)
-        await ex.edit(f"[{user.first_name}](tg://user?id={user.id}) DeActivated Replyoktavia!")
+        await ex.edit(f"[{user.first_name}](tg://user?id={user.id}) DeActivated Replyraid!")
     except Exception as e:
         await ex.edit(f"**ERROR:** `{e}`")
         return
 
 
-add_command_help(
-    "replyoktavia",
+aadd_command_help(
+    "replyraid",
     [
-        [".replyoktavia", "Reply To User\n To Raid on Someone."],
-        [".dreplyoktavia", "To Disable ReplyRaid."],
+        [".replyraid", "Reply To User\n To Raid on Someone."],
+        [".dreplyraid", "To Disable ReplyRaid."],
     ],
 )
+

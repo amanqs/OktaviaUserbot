@@ -7,7 +7,7 @@ from pyrogram import __version__, filters, Client
 from pyrogram import Client, filters, raw
 from pyrogram.types import Message
 from pyrogram.errors.exceptions.bad_request_400 import UsernameInvalid, PeerIdInvalid
-from config import ALIVE_PIC, ALIVE_TEXT
+from config import ALIVE_TEXT
 from Oktavia import START_TIME, StartTime, app
 from Oktavia import SUDO_USER
 from Oktavia.helper.PyroHelpers import ReplyCheck
@@ -21,8 +21,6 @@ from Oktavia.helper import *
 from Oktavia import *
 
 from Oktavia.modules.help import add_command_help
-
-alive_logo = ALIVE_PIC or "https://telegra.ph/file/cca73c1ce22e2c9932b99.jpg"
 
 if ALIVE_TEXT:
    txt = ALIVE_TEXT

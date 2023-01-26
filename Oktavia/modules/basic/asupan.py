@@ -29,6 +29,7 @@ add_command_help(
     "asupan",
     [
         [".asupan", "get asupan video."],
-        [".bokep"], "kaming sun..."
+        [".bokep", "kaming sun..."],
+        
     ],
 )

@@ -43,7 +43,6 @@ async def alive(client: Client, message: Message):
        await message.delete()
     except:
        pass
-    send = client.send_video if alive_logo.endswith(".mp4") else client.send_photo
     xd = (f"{txt}")
     try:
         await asyncio.gather(

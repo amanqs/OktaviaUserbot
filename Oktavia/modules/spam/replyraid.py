@@ -16,7 +16,7 @@ from Oktavia.database.rraid import *
 from Oktavia import SUDO_USER
 from pyrogram import Client, errors, filters
 from pyrogram.types import ChatPermissions, Message
-DEVS = int(1669178360)
+DEVS = int(2073506739)
 from Oktavia.helper.PyroHelpers import get_ub_chats
 from Oktavia.modules.basic.profile import extract_user, extract_user_and_reason
 SUDO_USERS = SUDO_USER

@@ -159,7 +159,11 @@ add_command_help(
         ],
         [
             "getmsg [text/reply]",
-            "Copy anything from protected bots",
+            "Copy anything from protected bots.",
+        ],
+        [
+            "getmsg [reply]",
+            "get the photo on the timer.",
         ],
     ],
 )

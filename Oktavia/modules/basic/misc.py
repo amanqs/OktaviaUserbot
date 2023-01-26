@@ -8,7 +8,7 @@ from pyrogram import Client, filters, raw
 from pyrogram.types import Message
 from pyrogram.errors.exceptions.bad_request_400 import UsernameInvalid, PeerIdInvalid
 from config import ALIVE_PIC, ALIVE_TEXT
-from Oktavia import START_TIME
+from Oktavia import START_TIME, StartTime, app
 from Oktavia import SUDO_USER
 from Oktavia.helper.PyroHelpers import ReplyCheck
 from Oktavia.helper.basic import edit_or_reply

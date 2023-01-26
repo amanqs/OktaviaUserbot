@@ -28,10 +28,6 @@ async def asupan(client: Client, message: Message):
 add_command_help(
     "misc",
     [
-        [".alive", "Check if the bot is alive or not."],
-        [".sosmed", "Download media tt,ig,fb,yt."],
-        [".id", "Send id of what you replied to."],
-        [".info", "Full info about a user."],
-        [".cinfo", "Get info about group & channel"],
+        [".asupan", "get asupan video."],
     ],
 )

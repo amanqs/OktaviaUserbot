@@ -28,7 +28,7 @@ if ALIVE_TEXT:
    txt = ALIVE_TEXT
 else:
     txt = (
-   f"**𝗢𝗸𝘁𝗮𝘃𝗶𝗮𝗨𝘀𝗲𝗿𝗯𝗼𝘁**\n"
+     f"**𝗢𝗸𝘁𝗮𝘃𝗶𝗮𝗨𝘀𝗲𝗿𝗯𝗼𝘁**\n"
       f"**status**: [Admin]\n\n"
           f" **oktavia_version**: `0.1`\n"
           f" ping=results["ping"]"

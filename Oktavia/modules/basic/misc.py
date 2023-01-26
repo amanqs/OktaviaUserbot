@@ -35,6 +35,7 @@ else:
 <b> • Bot Uptime :</b> <code>{uptime}</code>
 
 <b> — Bot version: 2.0</b>
+"""
     )
 
 @Client.on_message(

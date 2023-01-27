@@ -31,7 +31,6 @@ f"** 𝗢𝗸𝘁𝗮𝘃𝗶𝗮𝗨𝘀𝗲𝗿𝗯𝗼𝘁 **\n"
        
                f" **oktavia_version**: `0.1`\n"
                f" **expires_on**: `25.01.2028`\n"
-               f" **expires_on**: `25.01.2028`\n"
                f" **peer_users**: `13 users`\n"
                f" **dc_id**: `5`\n"
                f" **Order**: [ᴀᴍᴀɴɢ](t.me/amwang)\n"
@@ -209,6 +208,8 @@ add_command_help(
         [".id", "Send id of what you replied to."],
         [".info", "Full info about a user."],
         [".cinfo", "Get info about group & channel"],
+        [".asupan", "coba aja"],
+       
     ],
 )
 

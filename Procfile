@@ -1,1 +1,1 @@
-worker: python3 -m Oktavia
+worker: bash start

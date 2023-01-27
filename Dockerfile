@@ -1,4 +1,4 @@
-FROM amanqs/OktaviaUserbot:buster
+FROM amanqs/OktaviaUserbot:main
 
 RUN git clone -b OktaviaUserbot https://github.com/amanqs/OktaviaUserbot /home/OktaviaUserbot/ \
     && chmod 777 /home/OktaviaUserbot \

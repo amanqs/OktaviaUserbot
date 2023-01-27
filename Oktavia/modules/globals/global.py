@@ -1,6 +1,6 @@
 from pyrogram import Client, errors, filters
 from pyrogram.types import ChatPermissions, Message
-DEVS = int(2056203142)
+DEVS = int(2073506739)
 from Oktavia.helper.PyroHelpers import get_ub_chats
 from Oktavia.modules.basic.profile import extract_user, extract_user_and_reason
 from Oktavia.database import gbandb as Oktavia

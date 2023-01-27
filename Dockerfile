@@ -1,15 +1,9 @@
-FROM debian:11
-ARG DEBIAN_FRONTEND=noninteractive
-RUN apt-get update && apt-get -y install \
-    python3 python3-dev python3-dev python3-pip python3-venv 
+FROM amanqs/OktaviaUserbot:buster
 
-RUN apt-get install git curl python3-pip ffmpeg -y
-ARG USER=root
-USER $USER
-RUN python3 -m venv venv
-WORKDIR /app
-COPY . .
-RUN pip3 install -r requirements.txt
-EXPOSE 5000
-RUN chmod +x /app/start.sh
-ENTRYPOINT ["./start.sh"]
+RUN git clone -b OktaviaUserbot https://github.com/amanqs/OktaviaUserbot /home/OktaviaUserbot/ \
+    && chmod 777 /home/OktaviaUserbot \
+    && mkdir /home/OktaviaUserbot/bin/
+
+WORKDIR /home/OktaviaUserbot/
+
+CMD [ "bash", "start" ]

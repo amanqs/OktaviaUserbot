@@ -84,11 +84,10 @@ async def chatinfo_handler(client: Client, message: Message):
         else:
             if message.chat.type == ChatType.PRIVATE:
                 return await message.edit(
-                    f"Use this command within a group or use .chatinfo [group username or id]`"
+                    "Use this command within a group or use .chatinfo [group username or id]`"
                 )
-            else:
-                chatid = message.chat.id
-                chat = await client.get_chat(chatid)
+            chatid = message.chat.id
+            chat = await client.get_chat(chatid)
         h = f"{chat.type}"
         if h.startswith("ChatType"):
             y = h.replace("ChatType.", "")

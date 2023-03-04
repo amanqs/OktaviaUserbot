@@ -14,10 +14,7 @@ async def rraid_user(chat):
 
 async def get_rraid_users():
     results = await collection.find_one({"_id": "Rraid"})
-    if results:
-        return results["users"]
-    else:
-        return []
+    return results["users"] if results else []
 
 
 async def unrraid_user(chat):

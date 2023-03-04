@@ -9,11 +9,7 @@ from Oktavia.helper import *
 @Client.on_message(filters.command("info", ".") & filters.me)
 async def infchat_users(c: Client, m: Message):
     kk = await eor(m, "`Processing...`")
-    rep = m.reply_to_message
-    if rep:
-        input = rep.from_user.id
-    else:
-        input = get_arg(m)
+    input = rep.from_user.id if (rep := m.reply_to_message) else get_arg(m)
     if not input:
         return await eod(m, "<code>Give id/username or reply to a user to get info.</code>")
     try:

@@ -17,12 +17,11 @@ def get_text(message: Message) -> [None, str]:
     text_to_return = message.text
     if message.text is None:
         return None
-    if " " in text_to_return:
-        try:
-            return message.text.split(None, 1)[1]
-        except IndexError:
-            return None
-    else:
+    if " " not in text_to_return:
+        return None
+    try:
+        return message.text.split(None, 1)[1]
+    except IndexError:
         return None
 
 @Client.on_message(filters.command(["tg", "telegraph", "tm", "tgt"], ".") & filters.me)
@@ -50,7 +49,7 @@ async def uptotelegraph(client: Client, message: Message):
         await tex.edit(U_done)
         os.remove(m_d)
     elif message.reply_to_message.text:
-        page_title = get_text(message) if get_text(message) else client.me.first_name
+        page_title = get_text(message) or client.me.first_name
         page_text = message.reply_to_message.text
         page_text = page_text.replace("\n", "<br>")
         try:
@@ -63,11 +62,5 @@ async def uptotelegraph(client: Client, message: Message):
 
 
 add_command_help(
-    "telegraph",
-    [
-        [
-            f"telegraph `or` .tg",
-            "To upload on telegraph.",
-        ],
-    ],
+    "telegraph", [["telegraph `or` .tg", "To upload on telegraph."]]
 )

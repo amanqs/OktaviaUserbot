@@ -15,7 +15,7 @@ emojis = {
     "earth": list("🌏🌍🌎🌎🌍🌏🌍🌎"),
     "heart": list("❤️🧡💛💚💙💜🖤"),
 }
-emoji_commands = [x for x in emojis]
+emoji_commands = list(emojis)
 
 
 @Client.on_message(filters.command(emoji_commands, ".") & filters.me)
@@ -36,7 +36,7 @@ special_emojis_dict = {
     "bb": {"emoji": "🏀", "help": "The special basketball emoji"},
     "soccer": {"emoji": "⚽️", "help": "The special football emoji"},
 }
-special_emoji_commands = [x for x in special_emojis_dict]
+special_emoji_commands = list(special_emojis_dict)
 
 
 @Client.on_message(filters.command(special_emoji_commands, ".") & filters.me)
@@ -55,7 +55,7 @@ special_emoji_help = [
     [".earth `or` .globe", "Make the world go round."],
 ]
 
-for x in special_emojis_dict:
-    special_emoji_help.append([f".{x}", special_emojis_dict[x]["help"]])
-
+special_emoji_help.extend(
+    [f".{x}", special_emojis_dict[x]["help"]] for x in special_emojis_dict
+)
 add_command_help("emoji", special_emoji_help)

@@ -79,7 +79,7 @@ async def slap(bot: Client, message: Message):
 async def ok(bot: Client, message: Message):
     okay = "-_-"
     for _ in range(10):
-        okay = okay[:-1] + "_-"
+        okay = f"{okay[:-1]}_-"
         await message.edit(okay, parse_mode=None)
 
 
@@ -89,7 +89,7 @@ async def ok(bot: Client, message: Message):
 async def sad_cri(bot: Client, message: Message):
     cri = ";_;"
     for _ in range(10):
-        cri = cri[:-1] + "_;"
+        cri = f"{cri[:-1]}_;"
         await message.edit(cri, parse_mode=None)
 
 
@@ -97,7 +97,7 @@ async def sad_cri(bot: Client, message: Message):
 async def send_oof(bot: Client, message: Message):
     oof = "Oo "
     for _ in range(10):
-        oof = oof[:-1] + "of"
+        oof = f"{oof[:-1]}of"
         await message.edit(oof, parse_mode=None)
 
 
@@ -150,8 +150,7 @@ async def calligraphic_f(bot: Client, message: Message):
 
 def uwu(raw_text):
     flags = uwuify.SMILEY | uwuify.YU
-    text = uwuify.uwu(raw_text, flags=flags)
-    return text
+    return uwuify.uwu(raw_text, flags=flags)
 
 
 @Client.on_message(filters.command(["uwu", "uwuify"], ".") & filters.me)
@@ -262,10 +261,7 @@ async def heads_tails(bot: Client, message: Message):
 
 @Client.on_message(filters.command(["otherwise", 'other'], ".") & filters.me)
 async def youd_think_so_but_this_says_otherwise(bot: Client, message: Message):
-    disable_web_page_preview = True
-    if len(message.command) > 1:
-        disable_web_page_preview = False
-
+    disable_web_page_preview = len(message.command) <= 1
     await message.edit(
         f"You\'d think so, but this says <a href='https://i.imgur.com/nzncews.jpg'>otherwise</a>.",
         disable_web_page_preview=disable_web_page_preview

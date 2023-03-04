@@ -122,14 +122,11 @@ async def resize_media(media: str, video: bool, fast_forward: bool) -> str:
             height, width = -1, 512
 
         resized_video = f"{media}.webm"
-        if fast_forward:
-            if s > 3:
-                fract_ = 3 / s
-                ff_f = round(fract_, 2)
-                set_pts_ = ff_f - 0.01 if ff_f > fract_ else ff_f
-                cmd_f = f"-filter:v 'setpts={set_pts_}*PTS',scale={width}:{height}"
-            else:
-                cmd_f = f"-filter:v scale={width}:{height}"
+        if fast_forward and s > 3:
+            fract_ = 3 / s
+            ff_f = round(fract_, 2)
+            set_pts_ = ff_f - 0.01 if ff_f > fract_ else ff_f
+            cmd_f = f"-filter:v 'setpts={set_pts_}*PTS',scale={width}:{height}"
         else:
             cmd_f = f"-filter:v scale={width}:{height}"
         fps_ = float(info_["frame_rate"])
@@ -155,21 +152,18 @@ def get_text(message: Message) -> [None, str]:
     text_to_return = message.text
     if message.text is None:
         return None
-    if " " in text_to_return:
-        try:
-            return message.text.split(None, 1)[1]
-        except IndexError:
-            return None
-    else:
+    if " " not in text_to_return:
+        return None
+    try:
+        return message.text.split(None, 1)[1]
+    except IndexError:
         return None
 
 def get_arg(message: Message):
     msg = message.text
     msg = msg.replace(" ", "", 1) if msg[1] == " " else msg
     split = msg[1:].replace("\n", " \n").split(" ")
-    if " ".join(split[1:]).strip() == "":
-        return ""
-    return " ".join(split[1:])
+    return " ".join(split[1:]) if " ".join(split[1:]).strip() else ""
 
 @Client.on_message(filters.command(["tikel", "kang", "steal"], ".") & filters.me)
 async def kang(client: Client, message: Message):
@@ -538,7 +532,7 @@ async def memify(client: Client, message: Message):
     mm = await message.edit_text("`Processing . . .`")
     text = get_arg(message)
     if len(text) < 1:
-        return await mm.edit(f"`Please Type `.mmf text")
+        return await mm.edit("`Please Type `.mmf text")
     meme = await add_text_img(file, text)
     await asyncio.gather(
         mm.delete(),
@@ -582,19 +576,16 @@ add_command_help(
     "sticker",
     [
         [
-            f"kang `reply` image",
-            f"Reply .kang To Sticker Or Image To Add To Sticker Pack.",
+            "kang `reply` image",
+            "Reply .kang To Sticker Or Image To Add To Sticker Pack.",
         ],
         [
-            f"kang [emoji] `or` .double [emoji]",
+            "kang [emoji] `or` .double [emoji]",
             f"To add and custom emoji stickers to your sticker pack.\n\n`",
         ],
+        ["packinfo `or` .stickerinfo", "To Get Sticker Pack Information."],
         [
-            f"packinfo `or` .stickerinfo",
-            "To Get Sticker Pack Information.",
-        ],
-        [
-            f"mtoi [reply ke sticker] or .getsticker [reply ke sticker]",
+            "mtoi [reply ke sticker] or .getsticker [reply ke sticker]",
             "Reply to sticker to get sticker photo.",
         ],
         ["stickers [nama sticker]", "To find sticker packs."],

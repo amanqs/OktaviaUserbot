@@ -62,61 +62,61 @@ async def pornspam(xspam: Client, e: Message):
     filters.command(["raid"], ".") & (filters.me | filters.user(SUDO_USER))
 )
 async def raid(xspam: Client, e: Message):  
-      Oktavia = "".join(e.text.split(maxsplit=1)[1:]).split(" ", 2)
-      if len(Oktavia) == 2:
-          counts = int(Oktavia[0])
-          if int(e.chat.id) in GROUP:
-               return await e.reply_text("**Sorry !! i Can't Spam Here.**")
-          ok = await xspam.get_users(Oktavia[1])
-          id = ok.id
+    Oktavia = "".join(e.text.split(maxsplit=1)[1:]).split(" ", 2)
+    if len(Oktavia) == 2:
+        counts = int(Oktavia[0])
+        if int(e.chat.id) in GROUP:
+             return await e.reply_text("**Sorry !! i Can't Spam Here.**")
+        ok = await xspam.get_users(Oktavia[1])
+        id = ok.id
 #          try:
 #              userz = await xspam.get_users(id)
 #          except:
 #              await e.reply(f"`404 : User Doesn't Exists In This Chat !`")
 #              return #remove # to enable this
-          if int(id) in VERIFIED_USERS:
-                text = f"ERORR, soalnya ini pembuatku"
-                await e.reply_text(text)
-          elif int(id) in SUDO_USERS:
-                text = f"orang itu bagian dari devs saya."
-                await e.reply_text(text)
-          else:
-              fname = ok.first_name
-              mention = f"[{fname}](tg://user?id={id})"
-              for _ in range(counts):
-                    reply = choice(RAID)
-                    msg = f"{mention} {reply}"
-                    await xspam.send_message(e.chat.id, msg)
-                    await asyncio.sleep(0.10)
-      elif e.reply_to_message:
-          msg_id = e.reply_to_message.from_user.id
-          counts = int(Oktavia[0])
-          if int(e.chat.id) in GROUP:
-               return await e.reply_text("**Sorry !! i Can't Spam Here.**")
-          user_id = e.reply_to_message.from_user.id
-          ok = await xspam.get_users(user_id)
-          id = ok.id
-          try:
-              userz = await xspam.get_users(id)
-          except:
-              await e.reply(f"`404 : User Doesn't Exists In This Chat !`")
-              return
-          if int(id) in VERIFIED_USERS:
-                text = f"ERORR, soalnya ini pembuatku"
-                await e.reply_text(text)
-          elif int(id) in SUDO_USERS:
-                text = f"orang itu bagian dari devs saya."
-                await e.reply_text(text)
-          else:
-              fname = ok.first_name
-              mention = f"[{fname}](tg://user?id={id})"
-              for _ in range(counts):
-                    reply = choice(RAID)
-                    msg = f"{mention} {reply}"
-                    await xspam.send_message(e.chat.id, msg)
-                    await asyncio.sleep(0.10)
-      else:
-          await e.reply_text("Usage: .raid count username")
+        if int(id) in VERIFIED_USERS:
+            text = "ERORR, soalnya ini pembuatku"
+            await e.reply_text(text)
+        elif int(id) in SUDO_USERS:
+            text = "orang itu bagian dari devs saya."
+            await e.reply_text(text)
+        else:
+            fname = ok.first_name
+            mention = f"[{fname}](tg://user?id={id})"
+            for _ in range(counts):
+                  reply = choice(RAID)
+                  msg = f"{mention} {reply}"
+                  await xspam.send_message(e.chat.id, msg)
+                  await asyncio.sleep(0.10)
+    elif e.reply_to_message:
+        msg_id = e.reply_to_message.from_user.id
+        counts = int(Oktavia[0])
+        if int(e.chat.id) in GROUP:
+             return await e.reply_text("**Sorry !! i Can't Spam Here.**")
+        user_id = e.reply_to_message.from_user.id
+        ok = await xspam.get_users(user_id)
+        id = ok.id
+        try:
+            userz = await xspam.get_users(id)
+        except:
+            await e.reply("`404 : User Doesn't Exists In This Chat !`")
+            return
+        if int(id) in VERIFIED_USERS:
+            text = "ERORR, soalnya ini pembuatku"
+            await e.reply_text(text)
+        elif int(id) in SUDO_USERS:
+            text = "orang itu bagian dari devs saya."
+            await e.reply_text(text)
+        else:
+            fname = ok.first_name
+            mention = f"[{fname}](tg://user?id={id})"
+            for _ in range(counts):
+                  reply = choice(RAID)
+                  msg = f"{mention} {reply}"
+                  await xspam.send_message(e.chat.id, msg)
+                  await asyncio.sleep(0.10)
+    else:
+        await e.reply_text("Usage: .raid count username")
 
 
 add_command_help(
@@ -139,13 +139,13 @@ async def gmute_user(client: Client, message: Message):
         try:
             user = await client.get_users(args)
         except Exception:
-            await ex.edit(f"`Please specify a valid user!`")
+            await ex.edit("`Please specify a valid user!`")
             return
     elif reply:
         user_id = reply.from_user.id
         user = await client.get_users(user_id)
     else:
-        await ex.edit(f"`Please specify a valid user!`")
+        await ex.edit("`Please specify a valid user!`")
         return
     try:
         if user.id not in (await get_rraid_users()):

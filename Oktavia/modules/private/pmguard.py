@@ -23,9 +23,7 @@ def get_arg(message):
     msg = message.text
     msg = msg.replace(" ", "", 1) if msg[1] == " " else msg
     split = msg[1:].replace("\n", " \n").split(" ")
-    if " ".join(split[1:]).strip() == "":
-        return ""
-    return " ".join(split[1:])
+    return " ".join(split[1:]) if " ".join(split[1:]).strip() else ""
 
 
 @Client.on_message(filters.command("setlimit", ["."]) & filters.me)
@@ -91,7 +89,7 @@ async def reply_pm(app: Client, message):
     if user_warns <= limit - 2:
         user_warns += 1
         USERS_AND_WARNS.update({user: user_warns})
-        if not FLOOD_CTRL > 0:
+        if FLOOD_CTRL <= 0:
             FLOOD_CTRL += 1
         else:
             FLOOD_CTRL = 0

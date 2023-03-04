@@ -29,13 +29,13 @@ async def gmute_user(client: Client, message: Message):
         try:
             user = await client.get_users(args)
         except Exception:
-            await ex.edit(f"`Please specify a valid user!`")
+            await ex.edit("`Please specify a valid user!`")
             return
     elif reply:
         user_id = reply.from_user.id
         user = await client.get_users(user_id)
     else:
-        await ex.edit(f"`Please specify a valid user!`")
+        await ex.edit("`Please specify a valid user!`")
         return
     if user.id == client.me.id:
         return await ex.edit("**Okay Sure.. 🐽**")

@@ -22,22 +22,18 @@ async def extract_user_and_reason(message, sender_chat=False):
     reason = None
     if message.reply_to_message:
         reply = message.reply_to_message
-        if not reply.from_user:
-            if (
+        if reply.from_user:
+            id_ = reply.from_user.id
+
+        elif (
                 reply.sender_chat
                 and reply.sender_chat != message.chat.id
                 and sender_chat
             ):
-                id_ = reply.sender_chat.id
-            else:
-                return None, None
+            id_ = reply.sender_chat.id
         else:
-            id_ = reply.from_user.id
-
-        if len(args) < 2:
-            reason = None
-        else:
-            reason = text.split(None, 1)[1]
+            return None, None
+        reason = None if len(args) < 2 else text.split(None, 1)[1]
         return id_, reason
 
     if len(args) == 2:
@@ -330,15 +326,9 @@ add_command_help(
     "admin",
     [
         ["ban [reply/username/userid]", "Ban someone."],
-        [
-            f"unban [reply/username/userid]",
-            "Unban someone.",
-        ],
+        ["unban [reply/username/userid]", "Unban someone."],
         ["kick [reply/username/userid]", "kick out someone from your group."],
-        [
-            f"promote `or` .fullpromote",
-            "Promote someone.",
-        ],
+        ["promote `or` .fullpromote", "Promote someone."],
         ["demote", "Demote someone."],
         [
             "mute [reply/username/userid]",

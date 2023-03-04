@@ -102,9 +102,7 @@ async def define(bot: Client, message: Message):
             v_word = r_dec["word"]
         last_output = out_print(r_dec)
         if last_output:
-            await message.edit(
-                "`Search result for   `" + f" {v_word}\n\n" + last_output
-            )
+            await message.edit(f"`Search result for   ` {v_word}\n\n{last_output}")
         else:
             await message.edit("`No result found from the database.`")
 

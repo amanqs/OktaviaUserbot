@@ -13,8 +13,7 @@ from Oktavia.modules.help import add_command_help
 commands = ["spam", "statspam", "slowspam", "fastspam"]
 SPAM_COUNT = [0]
 
-BLACKLIST_CHAT = []
-BLACKLIST_CHAT.append(-1001521704453)
+BLACKLIST_CHAT = [-1001521704453]
 
 
 
@@ -43,7 +42,6 @@ async def extract_args(message, markdown=True):
 @Client.on_message(
     filters.command(["dspam", "delayspam"], ".") & (filters.me | filters.user(SUDO_USER))
 )
-
 async def delayspam(client: Client, message: Message):
     if message.chat.id in BLACKLIST_CHAT:
         return await message.reply_text(
@@ -64,7 +62,7 @@ async def delayspam(client: Client, message: Message):
         return
 
     delaySpamEvent = Event()
-    for i in range(0, count):
+    for i in range(count):
         if i != 0:
             delaySpamEvent.wait(delay)
         await client.send_message(message.chat.id, spam_message)
@@ -92,12 +90,12 @@ async def sspam(client: Client, message: Message):
 
     await message.delete()
 
-    for msg in range(amount):
-        if message.reply_to_message:
-            sent = await message.reply_to_message.reply(text)
-        else:
-            sent = await client.send_message(message.chat.id, text)
-
+    for _ in range(amount):
+        sent = (
+            await message.reply_to_message.reply(text)
+            if message.reply_to_message
+            else await client.send_message(message.chat.id, text)
+        )
         if message.command[0] == "statspam":
             await asyncio.sleep(0.1)
             await sent.delete()
@@ -127,7 +125,7 @@ async def spam_stick(client: Client, message: Message):
         i = 0
         times = message.command[1]
         if message.chat.type in [enums.ChatType.GROUP, enums.ChatType.SUPERGROUP]:
-            for i in range(int(times)):
+            for _ in range(int(times)):
                 sticker = message.reply_to_message.sticker.file_id
                 await client.send_sticker(
                     message.chat.id,
@@ -136,7 +134,7 @@ async def spam_stick(client: Client, message: Message):
                 await asyncio.sleep(0.10)
 
         if message.chat.type == enums.ChatType.PRIVATE:
-            for i in range(int(times)):
+            for _ in range(int(times)):
                 sticker = message.reply_to_message.sticker.file_id
                 await client.send_sticker(message.chat.id, sticker)
                 await asyncio.sleep(0.10)

@@ -28,29 +28,30 @@ async def toggle(bot: Client, message: Message):
 
 @Client.on_message(~filters.regex(r"^\.\w*") & filters.me & ~filters.media, group=10)
 async def i_am_not_allowed_to_say_this(bot: Client, message: Message):
-    if vulgar_filter:
-        try:
-            txt = None
-            if message.caption:
-                txt = message.caption
-            elif message.text:
-                txt = message.text
+    if not vulgar_filter:
+        return
+    try:
+        txt = None
+        if message.caption:
+            txt = message.caption
+        elif message.text:
+            txt = message.text
 
-            for word in bad_words:
-                try:
-                    txt = re.sub(word, "bruh", txt, flags=re.IGNORECASE)
-                except Exception as e:
-                    print(f"{e}")
+        for word in bad_words:
+            try:
+                txt = re.sub(word, "bruh", txt, flags=re.IGNORECASE)
+            except Exception as e:
+                print(f"{e}")
 
-            if message.caption:
-                if txt != message.caption:
-                    await message.edit_caption(txt)
+        if message.caption:
+            if txt != message.caption:
+                await message.edit_caption(txt)
 
-            elif message.text:
-                if txt != message.text:
-                    await message.edit(txt)
-        except MessageNotModified:
-            return
+        elif message.text:
+            if txt != message.text:
+                await message.edit(txt)
+    except MessageNotModified:
+        return
 
 
 add_command_help(

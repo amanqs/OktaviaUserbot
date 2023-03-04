@@ -41,7 +41,7 @@ async def _autopic(_, delay):
             await _.set_profile_photo(photo=photo)
             FIRST_TIME = False
         except Exception as exc:
-            print("Autopic Error: " + exc)
+            print(f"Autopic Error: {exc}")
         finally:
             Path(photo).unlink()
 

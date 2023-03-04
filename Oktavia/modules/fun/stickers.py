@@ -33,11 +33,10 @@ sticker_data = {
 }
 
 sticker_commands = []
-for x in sticker_data:
+for x, value in sticker_data.items():
     sticker_commands.append(x)
-    if "alts" in sticker_data[x]:
-        for y in sticker_data[x]["alts"]:
-            sticker_commands.append(y)
+    if "alts" in value:
+        sticker_commands.extend(iter(sticker_data[x]["alts"]))
 
 
 @Client.on_message(filters.command(sticker_commands, ".") & filters.me)
@@ -80,7 +79,7 @@ async def sticker_super_func(bot: Client, message: Message):
 
         if choice:
             sticker_results = await bot.get_inline_bot_results(
-                "stickerizerbot", f"#{choice}" + sticker_text
+                "stickerizerbot", f"#{choice}{sticker_text}"
             )
         else:
             sticker_results = await bot.get_inline_bot_results(

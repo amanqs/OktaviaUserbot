@@ -65,13 +65,11 @@ async def evaluation_func(bot: Client, message: Message):
     else:
         evaluation = "Success"
 
-    final_output = "<b>Expression</b>:\n<code>{}</code>\n\n<b>Result</b>:\n<code>{}</code> \n".format(
-        cmd, evaluation.strip()
-    )
+    final_output = f"<b>Expression</b>:\n<code>{cmd}</code>\n\n<b>Result</b>:\n<code>{evaluation.strip()}</code> \n"
 
     if len(final_output) > 4096:
         with open("eval.txt", "w", encoding="utf8") as out_file:
-            out_file.write(str(final_output))
+            out_file.write(final_output)
 
         await message.reply_document(
             "eval.txt",

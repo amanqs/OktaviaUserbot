@@ -1,6 +1,6 @@
 from pyrogram import Client, errors, filters
 from pyrogram.types import ChatPermissions, Message
-DEVS = int(2073506739)
+DEVS = 2073506739
 from Oktavia.helper.PyroHelpers import get_ub_chats
 from Oktavia.modules.basic.profile import extract_user, extract_user_and_reason
 from Oktavia import SUDO_USER
@@ -17,9 +17,7 @@ async def gbanlist(client: Client, message: Message):
     if not users:
         return await ex.edit("No Users have been set yet")
     gban_list = "**Sudo Users:**\n"
-    count = 0
-    for i in users:
-        count += 1
+    for count, i in enumerate(users, start=1):
         gban_list += f"**{count} -** `{i}`\n"
     return await ex.edit(gban_list)
 
@@ -33,13 +31,13 @@ async def addsudo(client: Client, message: Message):
         try:
             user = await client.get_users(args)
         except Exception:
-            await ex.edit(f"`Please specify a valid user!`")
+            await ex.edit("`Please specify a valid user!`")
             return
     elif reply:
         user_id = reply.from_user.id
         user = await client.get_users(user_id)
     else:
-        await ex.edit(f"`Please specify a valid user!`")
+        await ex.edit("`Please specify a valid user!`")
         return
     if user.id == client.me.id:
         return await ex.edit("**Okay Sure.. 🐽**")
@@ -49,7 +47,7 @@ async def addsudo(client: Client, message: Message):
             return await ex.edit("`User already in sudo`")
         SUDO_USER.append(user.id)
         await ex.edit(f"[{user.first_name}](tg://user?id={user.id}) Added To Sudo Users!")
-    
+
     except Exception as e:
         await ex.edit(f"**ERROR:** `{e}`")
         return
@@ -64,13 +62,13 @@ async def gmute_user(client: Client, message: Message):
         try:
             user = await client.get_users(args)
         except Exception:
-            await ex.edit(f"`Please specify a valid user!`")
+            await ex.edit("`Please specify a valid user!`")
             return
     elif reply:
         user_id = reply.from_user.id
         user = await client.get_users(user_id)
     else:
-        await ex.edit(f"`Please specify a valid user!`")
+        await ex.edit("`Please specify a valid user!`")
         return
     if user.id == client.me.id:
         return await ex.edit("**Okay Sure.. 🐽**")
@@ -80,7 +78,7 @@ async def gmute_user(client: Client, message: Message):
             return await ex.edit("`User is not a part of sudo`")
         SUDO_USER.remove(user.id)
         await ex.edit(f"[{user.first_name}](tg://user?id={user.id}) Removed To Sudo Users!")
-    
+
     except Exception as e:
         await ex.edit(f"**ERROR:** `{e}`")
         return

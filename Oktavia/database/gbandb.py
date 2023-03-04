@@ -17,7 +17,4 @@ async def gban_list():
 
 async def gban_info(user):
     kk = await gbun.find_one({"user": user})
-    if not kk:
-        return False
-    else:
-        return kk["reason"]
+    return kk["reason"] if kk else False

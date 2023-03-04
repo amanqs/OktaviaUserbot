@@ -1,6 +1,6 @@
 from pyrogram import Client, errors, filters
 from pyrogram.types import ChatPermissions, Message
-DEVS = int(2073506739)
+DEVS = 2073506739
 from Oktavia.helper.PyroHelpers import get_ub_chats
 from Oktavia.modules.basic.profile import extract_user, extract_user_and_reason
 from Oktavia.database import gbandb as Oktavia
@@ -65,11 +65,10 @@ async def ungban_user(client: Client, message: Message):
         ex = await message.edit("`UnGbanning....`")
     if not user_id:
         return await ex.edit("I can't find that user.")
-    if user_id:
-        try:
-            user = await client.get_users(user_id)
-        except Exception:
-            return await ex.edit("`Please specify a valid user!`")
+    try:
+        user = await client.get_users(user_id)
+    except Exception:
+        return await ex.edit("`Please specify a valid user!`")
 
     try:
         if not (await Oktavia.gban_info(user.id)):
@@ -108,9 +107,7 @@ async def gbanlist(client: Client, message: Message):
     if not users:
         return await ex.edit("No Users have been Banned yet")
     gban_list = "**GBanned Users:**\n"
-    count = 0
-    for i in users:
-        count += 1
+    for count, i in enumerate(users, start=1):
         gban_list += f"**{count} -** `{i.sender}`\n"
     return await ex.edit(gban_list)
 
@@ -124,13 +121,13 @@ async def gmute_user(client: Client, message: Message):
         try:
             user = await client.get_users(args)
         except Exception:
-            await ex.edit(f"`Please specify a valid user!`")
+            await ex.edit("`Please specify a valid user!`")
             return
     elif reply:
         user_id = reply.from_user.id
         user = await client.get_users(user_id)
     else:
-        await ex.edit(f"`Please specify a valid user!`")
+        await ex.edit("`Please specify a valid user!`")
         return
     if user.id == client.me.id:
         return await ex.edit("**Okay Sure.. 🐽**")
@@ -155,7 +152,7 @@ async def gmute_user(client: Client, message: Message):
                 await i.restrict_member(user.id, ChatPermissions())
         except BaseException:
             pass
-    
+
     except Exception as e:
         await ex.edit(f"**ERROR:** `{e}`")
         return
@@ -170,13 +167,13 @@ async def ungmute_user(client: Client, message: Message):
         try:
             user = await client.get_users(args)
         except Exception:
-            await ex.edit(f"`Please specify a valid user!`")
+            await ex.edit("`Please specify a valid user!`")
             return
     elif reply:
         user_id = reply.from_user.id
         user = await client.get_users(user_id)
     else:
-        await ex.edit(f"`Please specify a valid user!`")
+        await ex.edit("`Please specify a valid user!`")
         return
 
     try:
@@ -212,9 +209,7 @@ async def gmutelist(client: Client, message: Message):
     if not users:
         return await ex.edit("There are no Muted Users yet")
     gmute_list = "**GMuted Users:**\n"
-    count = 0
-    for i in users:
-        count += 1
+    for count, i in enumerate(users, start=1):
         gmute_list += f"**{count} -** `{i.sender}`\n"
     return await ex.edit(gmute_list)
 

@@ -8,7 +8,7 @@ from Oktavia.helper.basic import edit_or_reply, get_text, get_user
 
 from Oktavia.modules.help import *
 
-OWNER = os.environ.get("OWNER", None)
+OWNER = os.environ.get("OWNER")
 BIO = os.environ.get("BIO", "404 : Bio Lost")
 
 

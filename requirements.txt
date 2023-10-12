@@ -1,5 +1,5 @@
 flask
-gunicorn
+flask_restful
 aiohttp
 aiofiles
 bs4
@@ -11,8 +11,8 @@ heroku3
 requests
 motor==3.0.0
 opencv-python-headless
-pyrogram
-pymongo
+pyrogram==2.0.38
+pymongo==4.3.2
 python-dotenv
 pymediainfo
 prettytable
